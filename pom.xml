@@ -58,6 +58,7 @@
     </dependencies>
 
     <build>
+        <finalName>Myboard</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
