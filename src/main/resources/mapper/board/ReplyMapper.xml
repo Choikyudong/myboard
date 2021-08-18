@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cf.myboard.www.mapper.ReplyMapper">
+
+    <select id="getReplyList" parameterType="long" resultType="Reply">
+        select *
+        from reply
+        where board_id = #{board_id}
+    </select>
+
+    <select id="countReply" parameterType="long">
+        select count(id)
+        from reply;
+    </select>
+
+    <insert id="saveReply" parameterType="Reply">
+        insert into reply(content, author, board_id)
+        values (#{content}, #{author}, #{board_id})
+    </insert>
+
+</mapper>

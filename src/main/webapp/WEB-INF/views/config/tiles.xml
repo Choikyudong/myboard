@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- 기본값 -->
+    <definition name="main-layout" template="/WEB-INF/views/layout/default-body.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+    </definition>
+
+    <!--  메인페이지  -->
+    <definition name="index" extends="main-layout">
+        <put-attribute name="body" value="/WEB-INF/views/index.jsp" />
+    </definition>
+
+    <!--  User  -->
+    <!--  로그인  -->
+    <definition name="user/login" extends="main-layout">
+        <put-attribute name="body" value="/WEB-INF/views/user/login.jsp" />
+    </definition>
+    <!--  회원가입  -->
+    <definition name="user/sign" extends="main-layout">
+        <put-attribute name="body" value="/WEB-INF/views/user/sign.jsp" />
+    </definition>
+
+    <!--  board  -->
+    <!--  게시글목록  -->
+    <definition name="board/boardList" extends="main-layout">
+        <put-attribute name="body" value="/WEB-INF/views/board/boardList.jsp" />
+    </definition>
+    <!--  게시글쓰기  -->
+    <definition name="board/boardWrite" extends="main-layout">
+        <put-attribute name="body" value="/WEB-INF/views/board/boardWrite.jsp" />
+    </definition>
+    <!--  게시글상세보기  -->
+    <definition name="board/boardDetail" extends="main-layout">
+        <put-attribute name="body" value="/WEB-INF/views/board/boardDetail.jsp" />
+    </definition>
+
+    <!--  페이징  -->
+    <definition name="paging" extends="main-layout">
+        <put-attribute name="body" value="/WEB-INF/views/common/paging.jsp" />
+    </definition>
+
+</tiles-definitions>

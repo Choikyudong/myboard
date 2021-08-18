@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cf.myboard.www.mapper.BoardMapper">
+
+    <select id="getBoard" resultType="Board">
+        select *
+        from board
+        where id = #{id}
+    </select>
+
+    <select id="countBoard" parameterType="Board" resultType="int">
+        select count(id)
+        from board;
+    </select>
+
+    <select id="getBoardList" parameterType="Board" resultType="Board">
+        select *
+        from board
+        order by id desc
+        LIMIT #{pagination.firstIndex}, #{showPageSize}
+    </select>
+
+    <insert id="saveBoard" parameterType="Board">
+        insert into board(title, content, author)
+        values (#{title}, #{content}, #{author})
+    </insert>
+
+    <update id="updateBoard">
+        update board set content = #{content}
+        where id = #{id}
+        and author = #{author}
+    </update>
+
+    <delete id="deleteBoard">
+        delete from board
+        where id = #{id}
+    </delete>
+
+</mapper>
