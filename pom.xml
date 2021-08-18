@@ -10,7 +10,7 @@
     </parent>
     <groupId>cf.myboard.www</groupId>
     <artifactId>myboard</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+<!--    <version>0.0.1-SNAPSHOT</version>-->
     <packaging>war</packaging>
     <name>myboard</name>
     <description>myboard</description>
@@ -63,6 +63,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainclass>cf.myboard.www.MyboardApplication</mainclass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
