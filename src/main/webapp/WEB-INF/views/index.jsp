@@ -75,6 +75,7 @@
                         <li>SqlMapper : Mybatis</li>
                         <li>CSS : MDB & BootStrap</li>
                         <li>서버 : AWS(ec-2)</li>
+                        <li>서버엔진 : nginx</li>
                         <li>배포 & 빌드 : 젠킨스</li>
                     </ul>
                 </div>
