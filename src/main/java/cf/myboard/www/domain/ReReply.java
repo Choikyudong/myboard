@@ -24,6 +24,14 @@ public class ReReply {
         this.reply_id = reply_id;
     }
 
+    public long getBoard_id() {
+        return board_id;
+    }
+
+    public void setBoard_id(long board_id) {
+        this.board_id = board_id;
+    }
+
     public String getContent() {
         return content;
     }
@@ -38,14 +46,6 @@ public class ReReply {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public long getBoard_id() {
-        return board_id;
-    }
-
-    public void setBoard_id(long board_id) {
-        this.board_id = board_id;
     }
 
     @Override

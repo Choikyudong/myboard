@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 @Controller
 public class UserController {
 
@@ -30,9 +27,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/doLogin", method = RequestMethod.POST)
-    public String doLogin(@ModelAttribute("user") User user) {
+    public String doLogin(@ModelAttribute("user") User user) throws Exception {
         String result = userService.loginUser(user);
-        System.out.println(result);
         return result;
     }
 
@@ -53,4 +49,14 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @RequestMapping(value = "/profile")
+    public String profile() {
+        return "user/profile";
+    }
+
+    @RequestMapping(value = "/doUpdate", method = RequestMethod.POST)
+    public String profile(@ModelAttribute("user") User user) {
+        userService.updateUser(user);
+        return "redirect:/";
+    }
 }

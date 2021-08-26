@@ -5,9 +5,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class Paging {
 
-    private int nowPageNum; // 현재페이지
-    private int showPageSize; // 한번에 보여지는 게시글 수
-    private int rangePage; // 페이징 네비게이션의 변수
+    private long nowPageNum; // 현재페이지
+    private long showPageSize; // 한번에 보여지는 게시글 수
+    private long rangePage; // 페이징 네비게이션의 변수
 
     public Paging() {
         this.nowPageNum = 1;
@@ -15,27 +15,27 @@ public class Paging {
         this.rangePage = 5;
     }
 
-    public int getNowPageNum() {
+    public long getNowPageNum() {
         return nowPageNum;
     }
 
-    public void setNowPageNum(int nowPageNum) {
+    public void setNowPageNum(long nowPageNum) {
         this.nowPageNum = nowPageNum;
     }
 
-    public int getShowPageSize() {
+    public long getShowPageSize() {
         return showPageSize;
     }
 
-    public void setShowPageSize(int showPageSize) {
+    public void setShowPageSize(long showPageSize) {
         this.showPageSize = showPageSize;
     }
 
-    public int getRangePage() {
+    public long getRangePage() {
         return rangePage;
     }
 
-    public void setRangePage(int rangePage) {
+    public void setRangePage(long rangePage) {
         this.rangePage = rangePage;
     }
 

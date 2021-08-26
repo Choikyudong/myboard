@@ -19,9 +19,9 @@ public class BoardService {
 
     public List<Board> getBoardList(Board board) {
         List<Board> boardList = Collections.emptyList();
-        int countBoard = boardMapper.countBoard(board);
+        long countBoard = boardMapper.countBoard(board);
         Pagination pagination = new Pagination(board);
-        pagination.setTotalPage(countBoard);
+        pagination.setTotalPage((int) countBoard);
         board.setPagination(pagination);
         if (countBoard > 0) {
             boardList = boardMapper.getBoardList(board);
@@ -29,8 +29,9 @@ public class BoardService {
         return boardList;
     }
 
-    public void saveBoard(Board board) {
+    public long saveBoard(Board board) {
         boardMapper.saveBoard(board);
+        return board.getId();
     }
 
     public Board getBoard(long id) {

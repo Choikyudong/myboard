@@ -5,13 +5,13 @@
 
 <mapper namespace="cf.myboard.www.mapper.BoardMapper">
 
-    <select id="getBoard" resultType="Board">
+    <select id="getBoard" resultType="Board" parameterType="_long">
         select *
         from board
         where id = #{id}
     </select>
 
-    <select id="countBoard" parameterType="Board" resultType="int">
+    <select id="countBoard" parameterType="Board" resultType="_long">
         select count(id)
         from board;
     </select>

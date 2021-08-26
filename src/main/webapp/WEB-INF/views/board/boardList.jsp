@@ -8,6 +8,7 @@
         <th scope="col">#</th>
         <th scope="col">제목</th>
         <th scope="col">글쓴이</th>
+        <th scope="col">작성시간</th>
     </tr>
     </thead>
     <tbody>
@@ -16,11 +17,14 @@
             <th scope="row">${board.id}</th>
             <td><a href="/boardDetail?id=${board.id}">${board.title}</a></td>
             <td>${board.author}</td>
+            <td>작성시간들어올예정</td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 
-<jsp:include page="../common/paging.jsp" />
+<jsp:include page="../common/paging.jsp"/>
 
-<a class="btn btn-primary" href="<c:url value="boardWrite" />" role="button">Link</a>
+<c:if test="${currentUser ne null}">
+    <a class="btn btn-primary" href="/boardWrite">글작성</a>
+</c:if>

@@ -8,7 +8,7 @@
     <select id="getReplyList" parameterType="long" resultType="Reply">
         select *
         from reply
-        where board_id = #{board_id}
+        where board_id = #{board_id};
     </select>
 
     <select id="countReply" parameterType="long">

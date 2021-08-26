@@ -1,93 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
-
-<%--<div class="w-auto p-3" style="background-color: #eee">--%>
-<%--    <ul class="list-group">--%>
-<%--        <li class="list-group-item">${detail.title}</li>--%>
-<%--        <li class="list-group-item">${detail.content}</li>--%>
-<%--        <li class="list-group-item">${detail.author}</li>--%>
-<%--    </ul>--%>
-<%--</div>--%>
-<%--<hr/>--%>
-
-<%--<h4>댓글목록</h4>--%>
-<%--<div class="w-auto p-3" style="background-color: #eee">--%>
-<%--    <c:if test="${!empty currentUser}">--%>
-<%--        <h5>댓글작성</h5>--%>
-<%--        &lt;%&ndash;    <form action="/saveReply" method="post">&ndash;%&gt;--%>
-<%--        &lt;%&ndash;        <input type="hidden" value="${detail.id}" name="board_id">&ndash;%&gt;--%>
-<%--        &lt;%&ndash;        <div>&ndash;%&gt;--%>
-<%--        &lt;%&ndash;            <input type="text" placeholder="content" name="content">&ndash;%&gt;--%>
-<%--        &lt;%&ndash;        </div>&ndash;%&gt;--%>
-<%--        &lt;%&ndash;        <div>&ndash;%&gt;--%>
-<%--        &lt;%&ndash;            <input type="text" placeholder="author" name="author" value="${currentUser.name}">&ndash;%&gt;--%>
-<%--        &lt;%&ndash;        </div>&ndash;%&gt;--%>
-<%--        &lt;%&ndash;        <input type="submit" value="댓글"></input>&ndash;%&gt;--%>
-<%--        &lt;%&ndash;    </form>&ndash;%&gt;--%>
-
-<%--        <form action="/saveReply" method="post">--%>
-<%--            <input type="hidden" value="${detail.id}" name="board_id">--%>
-<%--            <input type="hidden" value="${currentUser.name}" name="author">--%>
-<%--            <div class="input-group mb-3">--%>
-<%--                <input type="text" class="form-control" placeholder="댓글을 입력하세요" aria-describedby="button-addon2"--%>
-<%--                       name="content"/>--%>
-<%--                <button class="btn btn-outline-primary" type="submit" id="button-addon2" data-mdb-ripple-color="dark">--%>
-<%--                    댓글등록--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--        </form>--%>
-<%--        <div class="input-group mb-3">--%>
-<%--        </div>--%>
-<%--    </c:if>--%>
-<%--    <hr/>--%>
-<%--    <c:choose>--%>
-<%--        <c:when test="${!empty reply}">--%>
-<%--            <c:forEach var="reply" items="${reply}" begin="0">--%>
-<%--                <ul class="list-group">--%>
-<%--                    <li class="list-group-item">${reply.author}의 댓글 : ${reply.content}</li>--%>
-<%--                </ul>--%>
-<%--                <c:if test="${!empty currentUser}">--%>
-<%--                    <h3>대댓글작성</h3>--%>
-<%--                    <form action="/saveReReply" method="post">--%>
-<%--                        <input type="hidden" value="${detail.id}" name="board_id">--%>
-<%--                        <input type="text" value="${reply.id}" name="reply_id">--%>
-<%--                        <div>--%>
-<%--                            <input type="text" placeholder="content" name="content">--%>
-<%--                        </div>--%>
-<%--                        <div>--%>
-<%--                            <input type="text" placeholder="author" name="author" value="${currentUser.name}">--%>
-<%--                        </div>--%>
-<%--                        <input type="submit" value="대댓글"></input>--%>
-<%--                    </form>--%>
-<%--                </c:if>--%>
-
-<%--                <c:forEach var="rereply" items="${rereply}" begin="0">--%>
-<%--                    <c:if test="${rereply.reply_id eq reply.id}">--%>
-<%--                        <ul class="list-group">--%>
-<%--                            <li class="list-group-item">${rereply.author}의 대댓글 : ${rereply.content}</li>--%>
-<%--                        </ul>--%>
-<%--                    </c:if>--%>
-<%--                </c:forEach>--%>
-<%--            </c:forEach>--%>
-<%--        </c:when>--%>
-<%--        <c:when test="${empty reply}">--%>
-<%--            <li class="list-group-item">댓글이 아직 없네요!</li>--%>
-<%--        </c:when>--%>
-<%--    </c:choose>--%>
-<%--</div>--%>
-
 <main class="mt-4 mb-5">
     <div class="container">
-        <!--Grid row-->
         <div class="row">
-            <!--Grid column-->
             <div class=" mb-4">
-                <!--Section: Post data-mdb-->
                 <section class="border-bottom mb-4">
                     <div class="row align-items-center mb-4">
                         <div class="col-lg-6 text-center text-lg-start mb-3 m-lg-0">
-                            <strong>${detail.title}</strong>
+                            <strong>제목 : ${detail.title}</strong>
                         </div>
 
                         <div class="col-lg-6 text-center text-lg-end">
@@ -95,89 +16,196 @@
                         </div>
                     </div>
                 </section>
-                <!--Section: Post data-mdb-->
 
-                <!--Section: Text-->
                 <section>
                     <p>${detail.content}</p>
                 </section>
-                <!--Section: Text-->
 
-                <!--Section: Share buttons-->
-                <section class="text-center border-top border-bottom py-4 mb-4">
-                    <button type="button" class="btn btn-primary me-1">
-                        <i class="fas fa-comments me-2"></i>Add reply
-                    </button>
-                </section>
-                <!--Section: Share buttons-->
+                <c:choose>
+                    <c:when test="${!empty currentUser}">
+                        <section class="text-center border-top border-bottom py-4 mb-4">
+                            <button type="button" class="btn btn-primary me-1">
+                                <a href="#reply">Add Reply!</a>
+                            </button>
+                            <c:if test="${currentUser.name eq detail.author}">
+                                <a href="#reply">
+                                    <button type="button" class="btn btn-danger me-1">
+                                        Delete!
+                                    </button>
+                                </a>
+                                <a href="#reply">
+                                    <button type="button" class="btn btn-info me-1">
+                                        Update!
+                                    </button>
+                                </a>
+                            </c:if>
+                        </section>
+                    </c:when>
+                    <c:when test="${empty currentUser}">
+                        <section class="text-center border-top border-bottom py-4 mb-4">
+                            <a href="/sign">
+                                <button type="button" class="btn btn-primary me-1">
+                                    Sign up!
+                                </button>
+                            </a>
+                        </section>
+                    </c:when>
+                </c:choose>
 
-                <!--Section: Comments-->
+                <!-- 댓글 부분 -->
                 <section class="border-bottom mb-3">
-                    <p class="text-center"><strong>Comments: 3</strong></p>
                     <c:choose>
                         <c:when test="${!empty reply}">
                             <c:forEach var="reply" items="${reply}" begin="0">
-                                <!-- Comment -->
                                 <div class="row mb-4">
-                                    <div class="col-2">
-                                        <i class="fas fa-user-alt fa-4x"></i>
+                                    <div class="col-1">
+                                        <i class="fas fa-user-alt fa-3x"></i>
                                     </div>
-
-                                    <div class="col-10">
+                                    <div class="col-11">
                                         <p class="mb-2"><strong>${reply.author}</strong></p>
                                         <p>${reply.content}</p>
+
+                                        <!-- 댓글답변 버튼 -->
+                                        <c:if test="${!empty currentUser}">
+                                            <button
+                                                    type="button"
+                                                    class="btn btn-primary btn-block"
+                                                    data-mdb-toggle="modal"
+                                                    data-mdb-target="#replyModal"
+                                                    onclick="transferId(${reply.id})"
+                                            >
+                                                답글달기
+                                            </button>
+                                        </c:if>
                                     </div>
                                 </div>
+
+                                <!-- 댓글답변 출력 -->
+                                <c:forEach var="rereply" items="${rereply}" begin="0">
+                                    <c:if test="${rereply.reply_id eq reply.id}">
+                                        <div class="row mb-4">
+                                            <div class="col-11">
+                                                <p class="mb-2"><strong>${rereply.author}</strong></p>
+                                                <p>${rereply.content}</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <i class="fas fa-user-alt fa-3x"></i>
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:forEach>
                             </c:forEach>
-                            <%--                            <c:forEach var="rereply" items="${rereply}" begin="0">--%>
-                            <%--                                <c:if test="${rereply.reply_id eq reply.id}">--%>
-                            <%--                                    <p class="mb-2"><strong>${rereply.author}</strong></p>--%>
-                            <%--                                    ${rereply.content}--%>
-                            <%--                                </c:if>--%>
-                            <%--                            </c:forEach>--%>
                         </c:when>
+
                         <c:when test="${empty reply}">
-                            <div class="row mb-4">
-                                <div class="col-10">
-                                    <p class="text-center">
-                                        댓글이 아직 없네요... ㅜ
-                                    </p>
-                                </div>
-                            </div>
+                            <p class="text-center"><strong>첫댓글을 작성해 주세요!</strong></p>
                         </c:when>
                     </c:choose>
                 </section>
-                <!--Section: Comments-->
 
-                <!--Section: Reply-->
-                <section>
+                <!-- 댓글 작성 -->
+                <section id="reply">
                     <c:choose>
                         <c:when test="${!empty currentUser}">
                             <form action="/saveReply" method="post">
-                                <!-- Message input -->
                                 <input type="hidden" value="${detail.id}" name="board_id">
                                 <input type="hidden" value="${currentUser.name}" name="author">
                                 <div class="form-outline mb-4">
-                                    <textarea class="form-control" id="reply" rows="2" name="content"></textarea>
-                                    <label class="form-label" for="reply">reply</label>
+                                    <textarea class="form-control" rows="2" name="content"></textarea>
+                                    <label class="form-label" for="reply">댓글을 입력해주세요</label>
                                 </div>
-
-                                <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-4">
-                                    Publish
+                                <button type="button" class="btn btn-primary btn-block mb-4"
+                                        onclick="saveReply(this.form)">
+                                    Save Reply!
                                 </button>
                             </form>
                         </c:when>
                         <c:when test="${empty currentUser}">
-                            <p class="text-center"><strong>댓글을 작성할려면 로그인이 필요합니다..</strong></p>
+                            <p class="text-center"><strong>회원만 댓글 작성이 가능합니다 ㅜ..</strong></p>
                         </c:when>
                     </c:choose>
                 </section>
-                <!--Section: Reply-->
+
+                <!-- 대댓글작성 -->
+                <div
+                        class="modal fade"
+                        id="replyModal"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">댓글작성</h5>
+                                <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-mdb-dismiss="modal"
+                                        aria-label="Close"
+                                ></button>
+                            </div>
+                            <form action="/saveReReply" method="post">
+                                <div class="modal-body">
+                                    <input type="hidden" value="${detail.id}" name="board_id">
+                                    <input type="hidden" id="reply_id" value="" name="reply_id">
+                                    <input type="hidden" name="author" value="${currentUser.name}">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="content" name="content" class="form-control"
+                                               placeholder="댓글을 작성해주세요"/>
+                                        <label class="form-label" for="content"></label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal"
+                                            value="NO!">Cancel!!!
+                                    </button>
+                                    <button type="button" class="btn btn-primary"
+                                            onclick="saveReReply(this.form)">
+                                        Save!
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <!--Grid column-->
         </div>
-        <!--Grid row-->
     </div>
 </main>
-<!--Main layout-->
+
+<script>
+    function saveReply(data) {
+        let author = data.author.value;
+        let content = data.content.value;
+        if (author.trim() == '') {
+            window.alert("잘못된 접근입니다.");
+            return false;
+        }
+        if (content.trim() == '') {
+            window.alert("댓글을 입력해주세요!");
+            return false;
+        }
+        data.submit();
+    }
+
+    //댓글의 답글 달아줄때 해당 댓글의 아이디값을 전달하기 위한 용도
+    function transferId(data) {
+        $('#reply_id').val(data);
+    }
+
+    function saveReReply(data) {
+        let author = data.author.value;
+        let content = data.content.value;
+        if (author.trim() == '') {
+            window.alert("잘못된 접근입니다.");
+            return false;
+        }
+        if (content.trim() == '') {
+            window.alert("댓글을 입력해주세요!");
+            return false;
+        }
+        data.submit();
+    }
+</script>

@@ -3,10 +3,10 @@ package cf.myboard.www.paging;
 public class Pagination  {
 
     private Paging paging; // 페이징 네비바에 적용시키기 위해서 정보를 페이징 정보를 가져온다.
-    private int totalPage; // 전체페이지
-    private int firstPage; // 처음페이지
-    private int lastPage; // 마지막페이지
-    private int firstIndex;
+    private long totalPage; // 전체페이지
+    private long firstPage; // 처음페이지
+    private long lastPage; // 마지막페이지
+    private long firstIndex;
 
     public Pagination(Paging paging) {
         if(paging.getNowPageNum() < 1) {
@@ -60,31 +60,31 @@ public class Pagination  {
         this.paging = paging;
     }
 
-    public int getTotalPage() {
+    public long getTotalPage() {
         return totalPage;
     }
 
-    public int getFirstPage() {
+    public long getFirstPage() {
         return firstPage;
     }
 
-    public void setFirstPage(int firstPage) {
+    public void setFirstPage(long firstPage) {
         this.firstPage = firstPage;
     }
 
-    public int getLastPage() {
+    public long getLastPage() {
         return lastPage;
     }
 
-    public void setLastPage(int lastPage) {
+    public void setLastPage(long lastPage) {
         this.lastPage = lastPage;
     }
 
-    public int getFirstIndex() {
+    public long getFirstIndex() {
         return firstIndex;
     }
 
-    public void setFirstIndex(int firstIndex) {
+    public void setFirstIndex(long firstIndex) {
         this.firstIndex = firstIndex;
     }
 

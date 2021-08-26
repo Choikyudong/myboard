@@ -25,6 +25,10 @@
     <definition name="user/sign" extends="main-layout">
         <put-attribute name="body" value="/WEB-INF/views/user/sign.jsp" />
     </definition>
+    <!--  회원정보  -->
+    <definition name="user/profile" extends="main-layout">
+        <put-attribute name="body" value="/WEB-INF/views/user/profile.jsp" />
+    </definition>
 
     <!--  board  -->
     <!--  게시글목록  -->

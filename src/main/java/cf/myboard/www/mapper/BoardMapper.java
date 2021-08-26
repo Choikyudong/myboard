@@ -10,7 +10,7 @@ public interface BoardMapper {
 
     List<Board> getBoardList(Board board);
 
-    int countBoard(Board board);
+    long countBoard(Board board);
 
     Board getBoard(long id);
 

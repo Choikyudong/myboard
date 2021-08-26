@@ -37,33 +37,31 @@ public class BoardController {
 
     @RequestMapping(value = "/doWrite", method = RequestMethod.POST)
     public String doWrite(@ModelAttribute("board") Board board) {
-        boardService.saveBoard(board);
-        return "board/boardDetail";
+        long id = boardService.saveBoard(board);
+        return "redirect:/boardList";
     }
 
     @RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
-    public String boardDetail(@RequestParam long id, Model model) {
+    public String boardDetail(@RequestParam(name = "id") long id, Model model) {
         Board detail = boardService.getBoard(id);
         List<Reply> reply = replyService.getReplyList(id);
         List<ReReply> reReply = replyService.getReReplyList(id);
         model.addAttribute("detail", detail);
         model.addAttribute("reply", reply);
         model.addAttribute("rereply", reReply);
-        System.out.println(reply);
-        System.out.println(reReply);
         return "board/boardDetail";
     }
 
     @RequestMapping(value = "/saveReply", method = RequestMethod.POST)
     public String saveReplay(@ModelAttribute("reply")Reply reply) {
         replyService.saveReply(reply);
-        return "redirect:/";
+        return "redirect:/boardList";
     }
 
     @RequestMapping(value = "/saveReReply", method = RequestMethod.POST)
     public String saveReplay(@ModelAttribute("reReply")ReReply reReply) {
         replyService.saveReReply(reReply);
-        return "redirect:/";
+        return "redirect:/boardList";
     }
 
 }
